@@ -103,7 +103,7 @@ func select_choice(button : Button):
 
 
 func load_scene(scene : String):
-	if scene == "level1":
+	if "level" in scene:
 		get_tree().change_scene_to_file(level1)
 
 

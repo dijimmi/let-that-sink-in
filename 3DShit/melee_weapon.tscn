@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c4wtyr88fnvx7"]
+
+[ext_resource type="Script" uid="uid://bngqgfasq8wxi" path="res://3DShit/melee_weapon.gd" id="1_3134e"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5y7bv"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lmo1y"]
+points = PackedVector3Array(0.10632747, 1.0158731, 0.07457522, -0.11585126, -1.0158731, -0.08409902, -0.11585126, -1.0158731, 0.07457522, -0.11585126, 1.0158731, -0.08409902, 0.10632747, -1.0158731, -0.08409902, 0.07457522, 1.0158731, -0.11585126, 0.07457522, -1.0158731, 0.10632747, -0.08409902, 1.0158731, 0.10632747, -0.08409902, -1.0158731, -0.11585126, -0.11585126, 1.0158731, 0.07457522, -0.08409902, 1.0158731, -0.11585126, -0.08409902, -1.0158731, 0.10632747, 0.07457522, -1.0158731, -0.11585126, 0.10632747, -1.0158731, 0.07457522, 0.07457522, 1.0158731, 0.10632747, 0.10632747, 1.0158731, -0.08409902)
+
+[node name="MeleeWeapon" type="Node3D" unique_id=1528444021 node_paths=PackedStringArray("area_3d")]
+script = ExtResource("1_3134e")
+area_3d = NodePath("Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1371932860]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_5y7bv")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1915792913]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1626688569]
+transform = Transform3D(1.4142135, 1.4142135, 0, -1.4142135, 1.4142135, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lmo1y")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

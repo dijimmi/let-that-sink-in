@@ -10,6 +10,8 @@ extends Node3D
 @export var round_timer: Timer
 @export var round_label: Label
 @export var ui_scene: PackedScene
+@export var player_spawn: Marker3D
+@export var npc_spawn: Marker3D
 
 var door_HP = 100.0
 var update_timer = 0.0
@@ -17,7 +19,7 @@ var enemy_spawn_range = Vector2(10, 0)
 var enemy_spawn_time = 5.0
 var enemy_count = 5
 var enemy_speed = 5
-var round_num = 1
+@export var round_num = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,10 +27,15 @@ func _ready() -> void:
 		return
 	var new_player : Player = player.instantiate()
 	new_player.is_playable = true
+	new_player.melee_weapon.hide()
+	new_player.global_position = player_spawn.position
 	
-	#var npc : Player = player.instantiate()
-	#npc.is_playable = false
-	#add_child(npc)
+	if StoryManager.current_scene == StoryManager.Scene.TWO:
+		var npc : Player = player.instantiate()
+		npc.is_playable = false
+		npc.weapon.hide()
+		npc.global_position = npc_spawn.position
+		add_child(npc)
 	
 	if not new_player.is_playable:
 		$Camera3D.make_current()

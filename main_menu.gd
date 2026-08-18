@@ -10,7 +10,8 @@ var sink_animation_enabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#animate_sink()
+	if StoryManager.current_scene == StoryManager.Scene.TWO:
+		process_mode = Node.PROCESS_MODE_DISABLED
 	logo.logo_anim_over.connect(_enable_sink_animation)
 
 @onready var base = texture_rect.position

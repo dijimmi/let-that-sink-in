@@ -4,67 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://2m84c2qs8uca" path="res://3DShit/bullet.tscn" id="2_j3ay7"]
 [ext_resource type="Script" uid="uid://cxtn6f5oogevq" path="res://3DShit/input_controller.gd" id="3_j54lm"]
 [ext_resource type="PackedScene" uid="uid://buqdm78xrip8w" path="res://3DShit/weapon.tscn" id="3_niiih"]
-[ext_resource type="Texture2D" uid="uid://cgjw3xpu65jlu" path="res://assets/Sprites/Sarah/sarah_front.png" id="3_pv5kp"]
+[ext_resource type="Texture2D" uid="uid://dqiab17iuew7v" path="res://assets/Honse_sprite.png" id="3_pv5kp"]
 [ext_resource type="Script" uid="uid://4ybwsl4vwhkk" path="res://3DShit/ai_controller.gd" id="4_pv5kp"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_du7l3"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cc702"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qwd8i"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7337"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1f3p"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jdfp"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bx0xt"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r75or"]
-atlas = ExtResource("3_pv5kp")
-region = Rect2(32, 64, 32, 32)
+[ext_resource type="PackedScene" uid="uid://c4wtyr88fnvx7" path="res://3DShit/melee_weapon.tscn" id="7_pv5kp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5y7bv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_du7l3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cc702")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qwd8i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m7337")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w1f3p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4jdfp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bx0xt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r75or")
+"texture": ExtResource("3_pv5kp")
 }],
 "loop": 1,
 "name": &"front",
@@ -93,22 +41,22 @@ properties/2/path = NodePath("Head:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D" unique_id=1495173217 node_paths=PackedStringArray("head", "head_camera", "weapon", "mesh", "input_controller", "ai_controller")]
+[node name="Player" type="CharacterBody3D" unique_id=1495173217 node_paths=PackedStringArray("head", "head_camera", "weapon", "melee_weapon", "mesh", "input_controller", "ai_controller")]
 script = ExtResource("1_hycrr")
 head = NodePath("Head")
 head_camera = NodePath("Head/HeadCamera")
 weapon = NodePath("Head/HeadCamera/Weapon")
 bullet = ExtResource("2_j3ay7")
+melee_weapon = NodePath("Head/HeadCamera/MeleeWeapon")
 mesh = NodePath("MeshInstance3D")
 input_controller = NodePath("InputController")
 ai_controller = NodePath("AIController")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=270345357]
-pixel_size = 0.1
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_5y7bv")
 animation = &"front"
-frame = 2
 frame_progress = 0.3829296
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1973946556]
@@ -140,6 +88,9 @@ path_max_distance = 0.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69478416, 0)
 
 [node name="HeadCamera" type="Camera3D" parent="Head" unique_id=1200460906]
+
+[node name="MeleeWeapon" parent="Head/HeadCamera" unique_id=1528444021 instance=ExtResource("7_pv5kp")]
+transform = Transform3D(-4.371139e-08, 0, 1, -0.66284513, 0.7487565, -2.8973881e-08, -0.7487565, -0.66284513, -3.2729186e-08, -0.093453765, -0.6145433, -0.98868716)
 
 [node name="Weapon" parent="Head/HeadCamera" unique_id=1681454042 instance=ExtResource("3_niiih")]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0.7989626, 0, 0.33465934)

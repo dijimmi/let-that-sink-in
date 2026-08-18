@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bwv2lnpaarrrt" path="res://logo.gd" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://crsintt6pgc7b" path="res://assets/blush.png" id="4_kek77"]
 [ext_resource type="AudioStream" uid="uid://3que44vm7a56" path="res://assets/SoundEffects/slap.wav" id="4_lquwl"]
-[ext_resource type="AudioStream" uid="uid://qrmvnlfi0c8f" path="res://assets/SoundEffects/yay.mp3" id="5_4c57u"]
+[ext_resource type="AudioStream" uid="uid://bpmq34nyt24vl" path="res://assets/SoundEffects/blush.mp3" id="5_4c57u"]
 [ext_resource type="AudioStream" uid="uid://dqltxgsrhgw5x" path="res://assets/SoundEffects/zoom.wav" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://i20702apsejq" path="res://assets/SoundEffects/main_menu_loop.wav" id="6_272bh"]
 

@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'blush.mp3',
+  cutSegments: [
+    {
+      start: 0,
+      end: 2.0128797578125,
+      name: '',
+      selected: true,
+    },
+  ],
+}

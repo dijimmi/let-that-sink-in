@@ -5,7 +5,7 @@ extends InputController
 @export var nav: NavigationAgent3D
 @export var detection_aura: Area3D
 
-var range = 5
+var range = 0
 var range_mod = 0.8
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,8 +21,8 @@ func _physics_process(delta: float) -> void:
 		var target = current_enemy.global_position
 		target.y = player.head_camera.global_position.y
 		
-		var distance = (player.global_position - target).length()
-		is_shooting = distance < range
+		#var distance = (player.global_position - target).length()
+		#is_shooting = distance < range
 		
 		player.head_camera.look_at(target)
 	else:

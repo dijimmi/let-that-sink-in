@@ -16,6 +16,7 @@ const JUMP_VELOCITY = 4.5
 @export_category("Weapons")
 @export var weapon : Weapon
 @export var bullet : PackedScene
+@export var melee_weapon: Node3D
 var bullet_inst : Bullet
 
 @export_category("Appareance")
