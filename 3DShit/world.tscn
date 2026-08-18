@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cjnbedjsmvpu0"]
 
 [ext_resource type="Script" uid="uid://cl8ndcwlp4osj" path="res://3DShit/world.gd" id="1_8o4kc"]
+[ext_resource type="PackedScene" uid="uid://c4uyfvo2v6rqm" path="res://3DShit/player.tscn" id="2_8o4kc"]
 [ext_resource type="PackedScene" uid="uid://cyjt1tdqa3hf7" path="res://3DShit/enemy.tscn" id="2_0211f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8voh2"]
@@ -30,11 +31,11 @@ format = 3
 mix_rate = 48000
 stereo = true
 
-[node name="World" type="Node3D" unique_id=832966518 node_paths=PackedStringArray("house", "enemy_spawn", "enemy", "death_sound")]
+[node name="World" type="Node3D" unique_id=832966518 node_paths=PackedStringArray("house", "enemy_spawn", "death_sound")]
 script = ExtResource("1_8o4kc")
 house = NodePath("NavigationRegion3D/House")
+player = ExtResource("2_8o4kc")
 enemy_spawn = NodePath("EnemySpawn")
-enemy = NodePath("")
 enemy_scene = ExtResource("2_0211f")
 death_sound = NodePath("DeathSound")
 

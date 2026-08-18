@@ -2,9 +2,8 @@ class_name World
 extends Node3D
 
 @export var house: StaticBody3D
-@export var player : CharacterBody3D
+@export var player : PackedScene
 @export var enemy_spawn: Marker3D
-@export var enemy: Enemy
 @export var enemy_scene : PackedScene
 @export var death_sound: AudioStreamPlayer
 
@@ -14,6 +13,8 @@ func _ready() -> void:
 	if not multiplayer.is_server():
 		return
 	_spawn_enemy()
+	var new_player = player.instantiate()
+	add_child(new_player)
 
 
 func _on_enemy_death():
@@ -35,6 +36,7 @@ func _get_spawn_position():
 	
 	pos.x = rand
 	return pos
+
 
 func _physics_process(delta: float) -> void:
 	update_timer += delta

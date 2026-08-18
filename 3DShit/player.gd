@@ -27,7 +27,8 @@ var t_bullet = bullet_reload_time
 
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(str(name).to_int())
+	pass
+	#set_multiplayer_authority(str(name).to_int())
 
 
 func _ready() -> void:
@@ -104,4 +105,3 @@ func _shoot():
 	bullet_inst.position = weapon.global_transform.origin
 	bullet_inst.global_transform.origin = weapon.muzzle.global_transform.origin
 	bullet_inst.global_transform.basis = head_camera.global_transform.basis
-			
