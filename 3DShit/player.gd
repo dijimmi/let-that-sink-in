@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody3D
 
-var speed = 0.0
+var speed = 6.7
 const SPRINT_SPEED = 20.0
 const WALK_SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -18,6 +18,9 @@ const JUMP_VELOCITY = 4.5
 @export var bullet : PackedScene
 var bullet_inst : Bullet
 
+@export_category("Appareance")
+@export var mesh : MeshInstance3D
+
 const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
@@ -25,6 +28,12 @@ var t_bob = 0.0
 var bullet_reload_time = 0.1
 var t_bullet = bullet_reload_time
 
+var is_playable = null
+
+@export var input_controller: InputController
+@export var ai_controller: Node3D
+
+var controller : InputController
 
 func _enter_tree() -> void:
 	pass
@@ -33,18 +42,26 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	if not is_multiplayer_authority(): return
+	assert(is_playable != null, "Player property 'is playable' is null")
+	
+	if is_playable:
+		controller = input_controller
+		head_camera.current = true
+	else:
+		controller = ai_controller
+		var new_material = StandardMaterial3D.new() 
+		new_material.albedo_color = Color(1.0, 0.0, 0.0, 1.0) # Red
+		mesh.material_override = new_material
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	head_camera.current = true
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 	
-	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		head_camera.rotate_x(-event.relative.y * SENSITIVITY)
-	if Input.is_action_just_pressed("esc"):
+	controller.move_camera(event, head, head_camera, SENSITIVITY)
+	
+	if Input.is_action_just_pressed("esc") and is_playable:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
@@ -53,23 +70,28 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	var direction := controller.get_direction(head)
+		
+	_move(direction, delta)
+	
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	head_camera.transform.origin = _headbob(t_bob)
+	
+	if t_bullet >= bullet_reload_time * 2:
+		t_bullet = bullet_reload_time
+	t_bullet += delta
+	
+	if controller.shooting_triggered() and t_bullet > bullet_reload_time:
+		t_bullet = 0.0
+		_shoot.rpc()
+		
+	move_and_slide()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	if Input.is_action_pressed("sprint"):
-		speed = SPRINT_SPEED
-	else:
-		speed = WALK_SPEED
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "front", "back")
-	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+
+func _move(direction, delta):
 	if is_on_floor():
-		if direction:
+		if direction.length() > 0.2:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
 		else:
@@ -78,18 +100,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
-		
-	t_bob += delta * velocity.length() * float(is_on_floor())
-	head_camera.transform.origin = _headbob(t_bob)
-	
-	if t_bullet >= bullet_reload_time * 2:
-		t_bullet = bullet_reload_time
-	t_bullet += delta
-	if Input.is_action_pressed("shoot") and t_bullet > bullet_reload_time:
-		t_bullet = 0.0
-		_shoot.rpc()
-		
-	move_and_slide()
 
 
 func _headbob(time) -> Vector3:

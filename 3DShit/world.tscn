@@ -197,6 +197,40 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 
+[node name="MoveJoystick" type="VirtualJoystick" parent="UILayer" unique_id=2126845724]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 213.0
+offset_top = -234.0
+offset_right = 253.0
+offset_bottom = -194.0
+grow_vertical = 0
+joystick_size = 412.0
+action_left = &"left"
+action_right = &"right"
+action_up = &"front"
+action_down = &"back"
+
+[node name="CameraJoystick" type="VirtualJoystick" parent="UILayer" unique_id=976569339]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -422.0
+offset_top = -268.0
+offset_right = -382.0
+offset_bottom = -228.0
+grow_horizontal = 0
+grow_vertical = 0
+joystick_size = 445.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1420079319]
+transform = Transform3D(1, 0, 0, 0, 0.20683853, 0.9783751, 0, -0.9783751, 0.20683853, 0, 8.036023, 0)
+
 [connection signal="body_entered" from="NavigationRegion3D/House/DoorArea" to="." method="_on_door_area_body_entered"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]

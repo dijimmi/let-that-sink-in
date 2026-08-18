@@ -23,7 +23,15 @@ var round_num = 1
 func _ready() -> void:
 	if not multiplayer.is_server():
 		return
-	var new_player = player.instantiate()
+	var new_player : Player = player.instantiate()
+	new_player.is_playable = true
+	
+	#var npc : Player = player.instantiate()
+	#npc.is_playable = false
+	#add_child(npc)
+	
+	if not new_player.is_playable:
+		$Camera3D.make_current()
 	add_child(new_player)
 	
 	update_round()
@@ -58,10 +66,10 @@ var enemy_damage = 2
 
 func _physics_process(delta: float) -> void:
 	update_timer += delta
-	if update_timer >= 0.2:  # update 5x/sec instead of 60x/sec
+	if update_timer >= 0.3:  # update 5x/sec instead of 60x/sec
 		update_timer = 0.0
-		get_tree().call_group("Enemies", "update_target_location", house.global_transform.origin)
-	
+		get_tree().call_group("Enemies", "update_target_location", door_area.global_transform.origin)
+		
 	if enemies_close > 0:
 		door_HP -= delta * enemies_close * enemy_damage
 		door_health.value = door_HP
@@ -74,6 +82,7 @@ func _physics_process(delta: float) -> void:
 	if door_HP < 0:
 		StoryManager.update_scene(StoryManager.Scene.TWO)
 		get_tree().change_scene_to_packed(ui_scene)
+
 
 func _on_enemy_spawn_timer_timeout() -> void:
 	if round_num > 5:

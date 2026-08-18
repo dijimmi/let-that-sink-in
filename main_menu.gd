@@ -29,6 +29,7 @@ func _enable_sink_animation():
 	menu_music.play()
 	play.disabled = false
 
+
 func _process(delta):
 	
 	if sink_animation_enabled:

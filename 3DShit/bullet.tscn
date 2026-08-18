@@ -42,7 +42,7 @@ process_material = SubResource("ParticleProcessMaterial_a287g")
 draw_pass_1 = SubResource("PrismMesh_t52xh")
 
 [node name="Lifetime" type="Timer" parent="." unique_id=1049589417]
-wait_time = 10.0
+wait_time = 2.5
 autostart = true
 
 [node name="ShootingSound" type="AudioStreamPlayer" parent="." unique_id=268179691]
