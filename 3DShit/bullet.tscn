@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://2m84c2qs8uca"]
+
+[ext_resource type="Script" uid="uid://bgy6026is82qb" path="res://3DShit/bullet.gd" id="1_yc4ep"]
+[ext_resource type="AudioStream" uid="uid://cbsf6ll57e4nx" path="res://assets/SoundEffects/shoot.wav" id="2_p7v34"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_86jij"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a287g"]
+direction = Vector3(1, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc4ep"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_t52xh"]
+material = SubResource("StandardMaterial3D_yc4ep")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Bullet" type="Node3D" unique_id=1917391768 node_paths=PackedStringArray("mesh", "ray", "explosion", "collision", "shooting_sound")]
+script = ExtResource("1_yc4ep")
+mesh = NodePath("Mesh")
+ray = NodePath("Ray")
+explosion = NodePath("Explosion")
+collision = NodePath("")
+shooting_sound = NodePath("ShootingSound")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=958856617]
+mesh = SubResource("SphereMesh_86jij")
+
+[node name="Ray" type="RayCast3D" parent="." unique_id=173325671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028654754, 0, 0.22952214)
+target_position = Vector3(0, 0, -1)
+
+[node name="Explosion" type="GPUParticles3D" parent="." unique_id=1218574251]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_a287g")
+draw_pass_1 = SubResource("PrismMesh_t52xh")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=1049589417]
+wait_time = 10.0
+autostart = true
+
+[node name="ShootingSound" type="AudioStreamPlayer" parent="." unique_id=268179691]
+stream = ExtResource("2_p7v34")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

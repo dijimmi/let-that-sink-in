@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://0w6sdos1604d"]
+
+[ext_resource type="PackedScene" uid="uid://cjnbedjsmvpu0" path="res://3DShit/world.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://cuuxaj3800gw0" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c4uyfvo2v6rqm" path="res://3DShit/player.tscn" id="2_h2yge"]
+
+[node name="Node" type="Node" unique_id=272204553 node_paths=PackedStringArray("main_menu", "world")]
+script = ExtResource("1_ig7tw")
+main_menu = NodePath("MainMenu")
+player = ExtResource("2_h2yge")
+world = NodePath("World")
+
+[node name="World" parent="." unique_id=832966518 instance=ExtResource("1_0xm2m")]
+
+[node name="MainMenu" type="CanvasLayer" parent="." unique_id=1261452662]
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenu" unique_id=1144661417]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer" unique_id=1509690807]
+layout_mode = 2
+alignment = 1
+
+[node name="Host" type="Button" parent="MainMenu/PanelContainer/VBoxContainer" unique_id=700707184]
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="MainMenu/PanelContainer/VBoxContainer" unique_id=1578592514]
+layout_mode = 2
+text = "Join"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=41129910]
+_spawnable_scenes = PackedStringArray("uid://c4uyfvo2v6rqm", "uid://cyjt1tdqa3hf7")
+spawn_path = NodePath("../World")
+
+[connection signal="pressed" from="MainMenu/PanelContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MainMenu/PanelContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
