@@ -7,12 +7,16 @@ extends Control
 @export var choices_buttons: HBoxContainer
 @export var character_name: Label
 @export var background_img: TextureRect
+@export var node: Node
 
 @export var level1 : String
 
 var curr_player
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED
+	await node.start_game
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(_ink_player)
 	_init_story()
 	
@@ -38,6 +42,9 @@ func _story_loaded(successfully: bool):
 		return
 
 	_bind_to_ink()
+	
+	jump_to_path(StoryManager.get_current_path())
+	
 	continue_story()
 
 
@@ -104,9 +111,7 @@ func background(key : String):
 	if "gun" in key:
 		background_img.texture = load("uid://cjryq86v83h24")
 	elif "black" in key:
-		var img = Image.new()
-		img.fill(Color.BLACK)
-		background_img.texture = img
+		background_img.hide()
 
 
 ## CURRENTLY NOT BEING USED
@@ -138,7 +143,7 @@ func reset_story():
 	_ink_player.reset()
 
 
-func _debug_jump_path(path_name):
+func jump_to_path(path_name):
 	_ink_player.choose_path(path_name)
 
 

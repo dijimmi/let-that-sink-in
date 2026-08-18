@@ -19,12 +19,11 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_yc4ep")
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Bullet" type="Node3D" unique_id=1917391768 node_paths=PackedStringArray("mesh", "ray", "explosion", "collision", "shooting_sound")]
+[node name="Bullet" type="Node3D" unique_id=1917391768 node_paths=PackedStringArray("mesh", "ray", "explosion", "shooting_sound")]
 script = ExtResource("1_yc4ep")
 mesh = NodePath("Mesh")
 ray = NodePath("Ray")
 explosion = NodePath("Explosion")
-collision = NodePath("")
 shooting_sound = NodePath("ShootingSound")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=958856617]
@@ -33,6 +32,7 @@ mesh = SubResource("SphereMesh_86jij")
 [node name="Ray" type="RayCast3D" parent="." unique_id=173325671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028654754, 0, 0.22952214)
 target_position = Vector3(0, 0, -1)
+collision_mask = 3
 
 [node name="Explosion" type="GPUParticles3D" parent="." unique_id=1218574251]
 emitting = false

@@ -1,25 +1,31 @@
 class_name Enemy
 extends CharacterBody3D
 @export var nav_agent : NavigationAgent3D
-const SPEED = 5.0
+var SPEED = 5.0
 @export var label: Label3D
 
 static var count = 0
 signal enemy_died
-var dead = false
+var hit_counter = 0
 
 func _ready():
 	count += 1
 	label.text += str(count)
 
+
+func set_speed(new_speed):
+	SPEED = new_speed
+
+
 func hit():
 	print("Ow, that hurt :(")
 	if not multiplayer.is_server():
 		return
-	if not dead:
-		dead = true
+	hit_counter += 1
+	if hit_counter >= 2:
 		enemy_died.emit()		
 		queue_free()
+
 
 func _physics_process(delta: float) -> void:
 	if not multiplayer.is_server():

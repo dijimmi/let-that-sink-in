@@ -79,7 +79,18 @@ Sarah: I found out I was wrong...
 
 -> END
 
+
+=== error ===
+
+There was an error choosing the path of the scene.
+
+Please check StoryManager.
+
+-> END
+
 === homeless_scene ===
+
+~ background("black")
 
 Narrator: Sarah, now homeless, walks through the woods in order to get help...
 
@@ -142,6 +153,10 @@ Only for the cute and flexible honse.
 
 Sarah: Okay...
 
+Narrator: END OF CURRENT CONTENT
+
+THANKS FOR PLAYTESTING!! <3333
+
 ~ load_scene("level2")
 
--> DONE
+-> END

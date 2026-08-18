@@ -18,11 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 __InkRuntime="*uid://d02sb2o7oovx7"
+StoryManager="*uid://dspafcs72d82c"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
