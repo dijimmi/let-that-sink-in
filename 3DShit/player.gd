@@ -47,6 +47,7 @@ func _ready() -> void:
 	if is_playable:
 		controller = input_controller
 		head_camera.current = true
+		$AnimatedSprite3D.hide()
 	else:
 		controller = ai_controller
 		var new_material = StandardMaterial3D.new() 
@@ -94,6 +95,7 @@ func _move(direction, delta):
 		if direction.length() > 0.2:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			$AnimatedSprite3D.play("front")
 		else:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 10.0)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 10.0)

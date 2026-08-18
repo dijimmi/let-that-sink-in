@@ -4,7 +4,72 @@
 [ext_resource type="PackedScene" uid="uid://2m84c2qs8uca" path="res://3DShit/bullet.tscn" id="2_j3ay7"]
 [ext_resource type="Script" uid="uid://cxtn6f5oogevq" path="res://3DShit/input_controller.gd" id="3_j54lm"]
 [ext_resource type="PackedScene" uid="uid://buqdm78xrip8w" path="res://3DShit/weapon.tscn" id="3_niiih"]
+[ext_resource type="Texture2D" uid="uid://cgjw3xpu65jlu" path="res://assets/Sprites/Sarah/sarah_front.png" id="3_pv5kp"]
 [ext_resource type="Script" uid="uid://4ybwsl4vwhkk" path="res://3DShit/ai_controller.gd" id="4_pv5kp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du7l3"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc702"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwd8i"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7337"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1f3p"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jdfp"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx0xt"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r75or"]
+atlas = ExtResource("3_pv5kp")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y7bv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du7l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc702")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwd8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7337")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1f3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jdfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx0xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r75or")
+}],
+"loop": 1,
+"name": &"front",
+"speed": 10.0
+}]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21qiv"]
 
@@ -38,7 +103,16 @@ mesh = NodePath("MeshInstance3D")
 input_controller = NodePath("InputController")
 ai_controller = NodePath("AIController")
 
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=270345357]
+pixel_size = 0.1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_5y7bv")
+animation = &"front"
+frame = 2
+frame_progress = 0.3829296
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1973946556]
+visible = false
 mesh = SubResource("CapsuleMesh_5y7bv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1670868868]
