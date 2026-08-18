@@ -2,6 +2,7 @@ extends Node
 
 @export var vn: VisualNovel
 @export var main_menu: CanvasLayer
+@export var menu_music: AudioStreamPlayer
 
 signal start_game
 
@@ -14,5 +15,6 @@ func _ready() -> void:
 
 
 func _on_host_pressed() -> void:
+	menu_music.stop()
 	main_menu.hide()
 	start_game.emit()

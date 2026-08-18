@@ -2,32 +2,151 @@
 
 [ext_resource type="Script" uid="uid://cuuxaj3800gw0" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://hj66ykoqro6m" path="res://vn.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bkk42x0h1xneq" path="res://assets/sink-29.png" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://22u1a5h2pgpo" path="res://main_menu.gd" id="2_5vw27"]
+[ext_resource type="Script" uid="uid://bwv2lnpaarrrt" path="res://logo.gd" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://crsintt6pgc7b" path="res://assets/blush.png" id="4_kek77"]
+[ext_resource type="AudioStream" uid="uid://3que44vm7a56" path="res://assets/SoundEffects/slap.wav" id="4_lquwl"]
+[ext_resource type="AudioStream" uid="uid://qrmvnlfi0c8f" path="res://assets/SoundEffects/yay.mp3" id="5_4c57u"]
+[ext_resource type="AudioStream" uid="uid://dqltxgsrhgw5x" path="res://assets/SoundEffects/zoom.wav" id="5_7mycd"]
+[ext_resource type="AudioStream" uid="uid://i20702apsejq" path="res://assets/SoundEffects/main_menu_loop.wav" id="6_272bh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
-
-[node name="Node" type="Node" unique_id=272204553 node_paths=PackedStringArray("main_menu")]
+[node name="Node" type="Node" unique_id=272204553 node_paths=PackedStringArray("main_menu", "menu_music")]
 script = ExtResource("1_ig7tw")
 main_menu = NodePath("MainMenu")
+menu_music = NodePath("MainMenu/MenuMusic")
 
 [node name="MainMenu" type="CanvasLayer" parent="." unique_id=1261452662]
 
-[node name="PanelContainer" type="PanelContainer" parent="MainMenu" unique_id=1144661417]
+[node name="Control" type="Control" parent="MainMenu" unique_id=718042923 node_paths=PackedStringArray("texture_rect", "logo", "menu_music", "blush", "blush_sound_effect", "play")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0xm2m")
+mouse_filter = 1
+script = ExtResource("2_5vw27")
+texture_rect = NodePath("TextureRect")
+logo = NodePath("Logo")
+menu_music = NodePath("../MenuMusic")
+blush = NodePath("TextureRect/Blush")
+blush_sound_effect = NodePath("TextureRect/Blush/BlushSoundEffect")
+play = NodePath("Play")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer" unique_id=1509690807]
-layout_mode = 2
-alignment = 1
+[node name="ColorRect" type="ColorRect" parent="MainMenu/Control" unique_id=688135667]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Host" type="Button" parent="MainMenu/PanelContainer/VBoxContainer" unique_id=700707184]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Control" unique_id=1678706226]
+layout_mode = 0
+offset_left = 1174.0
+offset_top = 145.0
+offset_right = 1782.0
+offset_bottom = 890.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_1bvp3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blush" type="TextureRect" parent="MainMenu/Control/TextureRect" unique_id=1374593813]
+visible = false
+layout_mode = 0
+offset_left = -44.0
+offset_top = 201.0
+offset_right = 611.0
+offset_bottom = 477.0
+rotation = -0.1480783
+texture = ExtResource("4_kek77")
+
+[node name="BlushSoundEffect" type="AudioStreamPlayer" parent="MainMenu/Control/TextureRect/Blush" unique_id=1773854428]
+stream = ExtResource("5_4c57u")
+
+[node name="Logo" type="Control" parent="MainMenu/Control" unique_id=773933409 node_paths=PackedStringArray("do", "not_", "title", "do_not_sound", "zoom_in")]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 89.0
+offset_top = -440.0
+offset_right = 1089.0
+offset_bottom = 60.0
+grow_vertical = 2
+script = ExtResource("3_lquwl")
+do = NodePath("Do")
+not_ = NodePath("Not")
+title = NodePath("Title")
+do_not_sound = NodePath("DoNotSound")
+zoom_in = NodePath("ZoomIn")
+
+[node name="Do" type="Label" parent="MainMenu/Control/Logo" unique_id=411511630]
+layout_mode = 1
+offset_right = 389.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 256
+text = "DO"
+
+[node name="Not" type="Label" parent="MainMenu/Control/Logo" unique_id=643561808]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1800.0
+offset_right = -1253.0
+offset_bottom = 349.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 256
+text = "NOT"
+
+[node name="Title" type="Label" parent="MainMenu/Control/Logo" unique_id=1907942258]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = -88.0
+offset_right = 267.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "LET THAT SINK IN"
+
+[node name="DoNotSound" type="AudioStreamPlayer" parent="MainMenu/Control/Logo" unique_id=520197069]
+stream = ExtResource("4_lquwl")
+pitch_scale = 0.6
+
+[node name="ZoomIn" type="AudioStreamPlayer" parent="MainMenu/Control/Logo" unique_id=1372869643]
+stream = ExtResource("5_7mycd")
+volume_db = -29.662
+pitch_scale = 4.0
+
+[node name="Play" type="Button" parent="MainMenu/Control" unique_id=700707184]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 334.0
+offset_top = -368.0
+offset_right = 834.0
+offset_bottom = -168.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+disabled = true
 text = "Play"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="MainMenu" unique_id=776840424]
+stream = ExtResource("6_272bh")
 
 [node name="VisualNovel" parent="." unique_id=1899710736 node_paths=PackedStringArray("node") instance=ExtResource("2_0xm2m")]
 node = NodePath("..")
 
-[connection signal="pressed" from="MainMenu/PanelContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MainMenu/Control/Play" to="." method="_on_host_pressed"]
