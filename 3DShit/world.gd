@@ -28,18 +28,18 @@ func _ready() -> void:
 	var new_player : Player = player.instantiate()
 	new_player.is_playable = true
 	new_player.melee_weapon.hide()
+	add_child(new_player)
 	new_player.global_position = player_spawn.position
 	
 	if StoryManager.current_scene == StoryManager.Scene.TWO:
 		var npc : Player = player.instantiate()
 		npc.is_playable = false
 		npc.weapon.hide()
-		npc.global_position = npc_spawn.position
 		add_child(npc)
+		npc.global_position = npc_spawn.position
 	
 	if not new_player.is_playable:
 		$Camera3D.make_current()
-	add_child(new_player)
 	
 	update_round()
 	_on_enemy_spawn_timer_timeout()
@@ -61,7 +61,7 @@ func _spawn_enemy():
 func _get_spawn_position():
 	var pos = enemy_spawn.global_position
 	var srange = enemy_spawn_range
-	var rand_x = randf_range(pos.x - srange.x, pos.x + srange.x)
+	var rand_x = randi_range(pos.x - srange.x, pos.x + srange.x)
 	var rand_z = randf_range(pos.z, pos.z + srange.y)
 	
 	pos.x = rand_x
@@ -131,10 +131,10 @@ func update_round():
 	round_label.text = "Round: %d" % round_num
 	
 	if round_num == 1:
-		enemy_spawn_range = Vector2(10, 0)
+		enemy_spawn_range = Vector2(20, 0)
 		enemy_count = 5
-		enemy_spawn_time = 5
-		enemy_speed = 5
+		enemy_spawn_time = 10000000
+		enemy_speed = 0
 		
 	elif round_num == 2:
 		enemy_spawn_range = Vector2(12, 3)

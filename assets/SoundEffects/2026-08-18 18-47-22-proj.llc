@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: '2026-08-18 18-47-22.mp4',
+  cutSegments: [
+    {
+      start: 7.362265625000003,
+      end: 59.979296875,
+      name: '',
+      selected: true,
+    },
+  ],
+}

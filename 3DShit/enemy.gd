@@ -1,36 +1,46 @@
 class_name Enemy
 extends CharacterBody3D
 @export var nav_agent : NavigationAgent3D
-var SPEED = 5.0
+var SPEED = 0.0
 @export var label: Label3D
+@export var animated_sprite_3d: AnimatedSprite3D
 
 static var count = 0
 signal enemy_died
 var hit_counter = 0
+var health = 2
+var unique_bullet : Bullet = Bullet.new()
 
 func _ready():
 	count += 1
-	label.text += str(count)
-
+	label.text += str(health - hit_counter)
 
 func set_speed(new_speed):
 	SPEED = new_speed
 
-
-func hit():
+## Pass bullet only if ricochet. Returns true if hit was successful, false if not.
+func hit(bullet : Bullet = null) -> bool:
+	if bullet == unique_bullet:
+		return false
+	
 	print("Ow, that hurt :(")
-	if not multiplayer.is_server():
-		return
 	hit_counter += 1
+	label.text = "Hits Left: " + str(health - hit_counter)
+	
+	if is_instance_valid(bullet):
+		unique_bullet = bullet
+	
 	if hit_counter >= 2:
-		enemy_died.emit()		
+		enemy_died.emit()
 		queue_free()
+	
+	return true
 
 
 func _physics_process(delta: float) -> void:
 	if not multiplayer.is_server():
 		return
-		
+	
 	if not is_on_floor():
 		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 	

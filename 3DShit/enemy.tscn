@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8iu5m"]
-size = Vector3(4, 0.001, 3)
+size = Vector3(4, 0.2, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kb17q"]
 vertex_color_use_as_albedo = true
@@ -34,11 +34,12 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="Enemy" type="CharacterBody3D" unique_id=556305158 node_paths=PackedStringArray("nav_agent", "label") groups=["Enemies"]]
+[node name="Enemy" type="CharacterBody3D" unique_id=556305158 node_paths=PackedStringArray("nav_agent", "label", "animated_sprite_3d") groups=["Enemies"]]
 collision_layer = 2
 script = ExtResource("1_8iu5m")
 nav_agent = NodePath("NavigationAgent3D")
 label = NodePath("Label")
+animated_sprite_3d = NodePath("AnimatedSprite3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1651415069]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.7404308, 0)
@@ -60,9 +61,9 @@ shape = SubResource("ConvexPolygonShape3D_ubnho")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1995209471]
 
 [node name="Label" type="Label3D" parent="." unique_id=2117652669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9204679, 0)
-text = "Sink  "
-font_size = 64
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8687186, 0)
+text = "Hits Left: "
+font_size = 84
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=70594541]
 replication_config = SubResource("SceneReplicationConfig_8iu5m")
