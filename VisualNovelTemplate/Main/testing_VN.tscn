@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cr5hg1ju1vhq"]
+
+[ext_resource type="Script" uid="uid://d3x5t1187vur7" path="res://VisualNovelTemplate/Main/testing_vn.gd" id="1_jy4ox"]
+[ext_resource type="Script" uid="uid://7nr1cui7y5lx" path="res://VisualNovelTemplate/Resources/Characters/characterinfo.gd" id="2_8m5dr"]
+[ext_resource type="Resource" uid="uid://drtlqbxfvdb3s" path="res://VisualNovelTemplate/Resources/Characters/ayumi.tres" id="3_3qs08"]
+[ext_resource type="Texture2D" uid="uid://cjryq86v83h24" path="res://assets/Scene2_Sarah_Gun.png" id="4_74cig"]
+[ext_resource type="Texture2D" uid="uid://8wxlx2xy4w8g" path="res://assets/Scene1_Sarah_TV.png" id="5_8nehn"]
+[ext_resource type="PackedScene" uid="uid://prn58dje400g" path="res://VisualNovelTemplate/Main/CharacterSprite/character_sprite.tscn" id="6_jy4ox"]
+[ext_resource type="Texture2D" uid="uid://bsv12lepweak5" path="res://assets/ui_tex_rabbit_soft.png" id="7_x22u3"]
+[ext_resource type="PackedScene" uid="uid://delyravv8ivr2" path="res://VisualNovelTemplate/Main/Textbox/vn_text_box.tscn" id="8_gupco"]
+
+[node name="VisualNovel" type="Control" unique_id=1798825500 node_paths=PackedStringArray("background_img", "textbox", "choices_buttons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jy4ox")
+background_img = NodePath("BGImage")
+textbox = NodePath("VNTextBox")
+choices_buttons = NodePath("ChoicesPlaceholder")
+characters = Dictionary[String, ExtResource("2_8m5dr")]({
+"Ayumi": ExtResource("3_3qs08")
+})
+backgrounds = Dictionary[String, Texture]({
+"gun": ExtResource("4_74cig"),
+"intro": ExtResource("5_8nehn")
+})
+character_sprite_scene = ExtResource("6_jy4ox")
+
+[node name="BGImage" type="TextureRect" parent="." unique_id=583659498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_x22u3")
+
+[node name="VNTextBox" parent="." unique_id=244194875 instance=ExtResource("8_gupco")]
+layout_mode = 1
+
+[node name="ChoicesPlaceholder" type="HBoxContainer" parent="." unique_id=1845500620]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Voice" type="AudioStreamPlayer" parent="." unique_id=592490985]

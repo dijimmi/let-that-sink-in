@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://delyravv8ivr2"]
 
-[ext_resource type="Script" uid="uid://40sd7yq5vc8y" path="res://textbox.gd" id="1_r3d5v"]
-[ext_resource type="Script" uid="uid://m7fe5xfp0y7c" path="res://character_name.gd" id="2_q5q8w"]
-[ext_resource type="Texture2D" uid="uid://c4uq1rr4s3jeb" path="res://icon.svg" id="3_dftke"]
-[ext_resource type="Script" uid="uid://c2hcfwhjl7p7c" path="res://story_test.gd" id="4_3a4th"]
-[ext_resource type="Texture2D" uid="uid://bkk42x0h1xneq" path="res://assets/sink-29.png" id="5_2acvb"]
+[ext_resource type="Script" uid="uid://40sd7yq5vc8y" path="res://VisualNovelTemplate/Main/Textbox/textbox.gd" id="1_7dbm2"]
+[ext_resource type="Script" uid="uid://m7fe5xfp0y7c" path="res://VisualNovelTemplate/Main/Textbox/character_name.gd" id="2_goxu7"]
+[ext_resource type="Texture2D" uid="uid://c4uq1rr4s3jeb" path="res://icon.svg" id="3_tx58k"]
+[ext_resource type="Script" uid="uid://c2hcfwhjl7p7c" path="res://VisualNovelTemplate/Main/Textbox/story_test.gd" id="4_tffni"]
+[ext_resource type="Texture2D" uid="uid://bkk42x0h1xneq" path="res://assets/sink-29.png" id="5_73h18"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqkrb"]
 
@@ -21,7 +21,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("1_r3d5v")
+script = ExtResource("1_7dbm2")
 character_name_label = NodePath("NameContainer/Margins/CharacterName")
 story_text_label = NodePath("TextBox/Margins/StoryText")
 arrow = NodePath("TextBox/Arrow")
@@ -46,7 +46,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
-script = ExtResource("2_q5q8w")
+script = ExtResource("2_goxu7")
 
 [node name="TextBox" type="Control" parent="." unique_id=49803779]
 custom_minimum_size = Vector2(1000, 300)
@@ -69,7 +69,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_dftke")
+texture = ExtResource("3_tx58k")
 
 [node name="Margins" type="MarginContainer" parent="TextBox" unique_id=755914299]
 layout_mode = 0
@@ -88,7 +88,7 @@ text = "texto"
 fit_content = true
 scroll_active = false
 vertical_alignment = 1
-script = ExtResource("4_3a4th")
+script = ExtResource("4_tffni")
 
 [node name="Arrow" type="TextureRect" parent="TextBox" unique_id=1929647718]
 custom_minimum_size = Vector2(50, 50)
@@ -99,7 +99,7 @@ offset_right = 970.0
 offset_bottom = 270.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("5_2acvb")
+texture = ExtResource("5_73h18")
 expand_mode = 1
 stretch_mode = 4
 

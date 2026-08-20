@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpy3sxkp3ie6v" path="res://vn.gd" id="1_rh2ag"]
 [ext_resource type="Texture2D" uid="uid://8wxlx2xy4w8g" path="res://assets/Scene1_Sarah_TV.png" id="2_3thg1"]
-[ext_resource type="Script" uid="uid://c2hcfwhjl7p7c" path="res://story_test.gd" id="3_luay6"]
+[ext_resource type="Script" uid="uid://c2hcfwhjl7p7c" path="res://VisualNovelTemplate/Main/Textbox/story_test.gd" id="3_luay6"]
 
 [node name="VisualNovel" type="Control" unique_id=1899710736 node_paths=PackedStringArray("story_test", "choices_buttons", "character_name", "background_img")]
 layout_mode = 3

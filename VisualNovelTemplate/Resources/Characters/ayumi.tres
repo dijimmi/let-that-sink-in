@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://drtlqbxfvdb3s"]
 
-[ext_resource type="Script" uid="uid://7nr1cui7y5lx" path="res://Resources/characterinfo.gd" id="1_nyqcu"]
+[ext_resource type="Script" uid="uid://7nr1cui7y5lx" path="res://VisualNovelTemplate/Resources/Characters/characterinfo.gd" id="1_nyqcu"]
 [ext_resource type="Texture2D" uid="uid://uuj70w4ef2jr" path="res://assets/Sprites/Portrait_Base_NoOutline.png" id="1_pcoyx"]
 [ext_resource type="Texture2D" uid="uid://c8uwj4nvxpmd" path="res://assets/Sprites/Portrait_Eyes_3_Smile.png" id="2_55x8g"]
 [ext_resource type="AudioStream" uid="uid://qrmvnlfi0c8f" path="res://assets/SoundEffects/yay.mp3" id="4_j14ob"]

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://prn58dje400g"]
 
-[ext_resource type="Script" uid="uid://btsj0m4qbtpxv" path="res://character_sprite.gd" id="1_03436"]
-[ext_resource type="Texture2D" uid="uid://uuj70w4ef2jr" path="res://assets/Sprites/Portrait_Base_NoOutline.png" id="2_q4k3m"]
-[ext_resource type="PackedScene" uid="uid://bxxkmmucm8fvc" path="res://portrait_expression.tscn" id="3_e4gvd"]
+[ext_resource type="Script" uid="uid://btsj0m4qbtpxv" path="res://VisualNovelTemplate/Main/CharacterSprite/character_sprite.gd" id="1_33y5c"]
+[ext_resource type="PackedScene" uid="uid://bxxkmmucm8fvc" path="res://VisualNovelTemplate/Main/CharacterSprite/portrait_expression.tscn" id="2_t8ndx"]
+[ext_resource type="Texture2D" uid="uid://uuj70w4ef2jr" path="res://assets/Sprites/Portrait_Base_NoOutline.png" id="3_67jel"]
 
-[node name="CharacterSprite" type="Control" unique_id=480421720 node_paths=PackedStringArray("base_sprite", "expressions", "voice")]
+[node name="CharacterSprite" type="Control" unique_id=480421720 node_paths=PackedStringArray("base_sprite", "expressions")]
 custom_minimum_size = Vector2(822, 1080)
 layout_mode = 3
 anchors_preset = 8
@@ -18,11 +18,10 @@ offset_right = 411.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_03436")
+script = ExtResource("1_33y5c")
 base_sprite = NodePath("BaseSprite")
 expressions = NodePath("BaseSprite/Expressions")
-expression_rect = ExtResource("3_e4gvd")
-voice = NodePath("")
+expression_rect = ExtResource("2_t8ndx")
 
 [node name="BaseSprite" type="TextureRect" parent="." unique_id=728597028]
 layout_mode = 1
@@ -31,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_q4k3m")
+texture = ExtResource("3_67jel")
 expand_mode = 1
 stretch_mode = 5
 
@@ -43,5 +42,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Default" parent="BaseSprite/Expressions" unique_id=241444444 instance=ExtResource("3_e4gvd")]
+[node name="Default" parent="BaseSprite/Expressions" unique_id=241444444 instance=ExtResource("2_t8ndx")]
 layout_mode = 1
