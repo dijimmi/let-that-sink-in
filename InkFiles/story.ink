@@ -56,7 +56,7 @@ Sarah: Sure, give me a sec.
 
 Narrator: Sarah rummages through her belongins.
 
-~ background("gun")
+~ background("gn")
 
 Sarah: Try me again next time.
 

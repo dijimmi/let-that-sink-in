@@ -1,5 +1,5 @@
 class_name StoryText
-extends Label
+extends RichTextLabel
 
 var visible_char = 0
 var text_speed = 50

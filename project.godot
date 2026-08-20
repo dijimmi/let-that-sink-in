@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 __InkRuntime="*uid://d02sb2o7oovx7"
 StoryManager="*uid://dspafcs72d82c"
+InkManager="*uid://dn1wi5ueme1nn"
 
 [display]
 

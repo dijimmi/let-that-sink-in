@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://cr5hg1ju1vhq"]
+
+[ext_resource type="Script" uid="uid://d3x5t1187vur7" path="res://testing_vn.gd" id="1_5fcpu"]
+[ext_resource type="Texture2D" uid="uid://bsv12lepweak5" path="res://assets/ui_tex_rabbit_soft.png" id="2_8jwtc"]
+[ext_resource type="Script" uid="uid://c2hcfwhjl7p7c" path="res://story_test.gd" id="2_soqc3"]
+[ext_resource type="Script" uid="uid://40sd7yq5vc8y" path="res://textbox.gd" id="3_1oafl"]
+[ext_resource type="Script" uid="uid://m7fe5xfp0y7c" path="res://character_name.gd" id="3_8jwtc"]
+[ext_resource type="Texture2D" uid="uid://bkk42x0h1xneq" path="res://assets/sink-29.png" id="6_dqkrb"]
+
+[node name="VisualNovel" type="Control" unique_id=1798825500 node_paths=PackedStringArray("choices_buttons", "background_img", "textbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5fcpu")
+choices_buttons = NodePath("ChoicesPlaceholder")
+background_img = NodePath("BGImage")
+textbox = NodePath("Textbox")
+
+[node name="BGImage" type="TextureRect" parent="." unique_id=583659498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8jwtc")
+
+[node name="CharacterSprite" type="Control" parent="." unique_id=1949474355]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BaseSprite" type="TextureRect" parent="CharacterSprite" unique_id=1714098736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Expressions" type="Control" parent="CharacterSprite/BaseSprite" unique_id=699432198]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Neutral" type="TextureRect" parent="CharacterSprite/BaseSprite/Expressions" unique_id=861630238]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Textbox" type="Control" parent="." unique_id=1717557038 node_paths=PackedStringArray("character_name_label", "story_text_label", "arrow")]
+custom_minimum_size = Vector2(1000, 367)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_1oafl")
+character_name_label = NodePath("NameContainer/Margins/CharacterName")
+story_text_label = NodePath("TextBox/Margins/StoryText")
+arrow = NodePath("TextBox/Margins/Arrow")
+
+[node name="NameContainer" type="PanelContainer" parent="Textbox" unique_id=105701592]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Margins" type="MarginContainer" parent="Textbox/NameContainer" unique_id=637394373]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CharacterName" type="RichTextLabel" parent="Textbox/NameContainer/Margins" unique_id=586459017]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Character Name"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("3_8jwtc")
+
+[node name="TextBox" type="PanelContainer" parent="Textbox" unique_id=1490415616]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Margins" type="MarginContainer" parent="Textbox/TextBox" unique_id=432547978]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="StoryText" type="RichTextLabel" parent="Textbox/TextBox/Margins" unique_id=190005328]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "texto"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+script = ExtResource("2_soqc3")
+
+[node name="Arrow" type="TextureRect" parent="Textbox/TextBox/Margins" unique_id=440150088]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("6_dqkrb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Textbox/TextBox" unique_id=2081976365]
+layout_mode = 2
+
+[node name="ChoicesPlaceholder" type="HBoxContainer" parent="." unique_id=1845500620]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Textbox/TextBox/Button" to="." method="_on_button_pressed"]

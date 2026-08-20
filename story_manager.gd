@@ -12,6 +12,6 @@ var paths : Dictionary[Scene, String] = {
 func update_scene(new_scene : Scene):
 	current_scene = new_scene
 
+
 func get_current_path() -> String:
 	return paths.get(current_scene, "error")
-	
