@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://delyravv8ivr2"]
+
+[ext_resource type="Script" uid="uid://40sd7yq5vc8y" path="res://textbox.gd" id="1_r3d5v"]
+[ext_resource type="Script" uid="uid://m7fe5xfp0y7c" path="res://character_name.gd" id="2_q5q8w"]
+[ext_resource type="Texture2D" uid="uid://c4uq1rr4s3jeb" path="res://icon.svg" id="3_dftke"]
+[ext_resource type="Script" uid="uid://c2hcfwhjl7p7c" path="res://story_test.gd" id="4_3a4th"]
+[ext_resource type="Texture2D" uid="uid://bkk42x0h1xneq" path="res://assets/sink-29.png" id="5_2acvb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqkrb"]
+
+[node name="VNTextBox" type="Control" unique_id=244194875 node_paths=PackedStringArray("character_name_label", "story_text_label", "arrow")]
+custom_minimum_size = Vector2(1000, 367)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_r3d5v")
+character_name_label = NodePath("NameContainer/Margins/CharacterName")
+story_text_label = NodePath("TextBox/Margins/StoryText")
+arrow = NodePath("TextBox/Arrow")
+
+[node name="NameContainer" type="PanelContainer" parent="." unique_id=66167367]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Margins" type="MarginContainer" parent="NameContainer" unique_id=562555765]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CharacterName" type="RichTextLabel" parent="NameContainer/Margins" unique_id=1145688118]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Character Name"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("2_q5q8w")
+
+[node name="TextBox" type="Control" parent="." unique_id=49803779]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextBoxBG" type="TextureRect" parent="TextBox" unique_id=1286323453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dftke")
+
+[node name="Margins" type="MarginContainer" parent="TextBox" unique_id=755914299]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 300.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="StoryText" type="RichTextLabel" parent="TextBox/Margins" unique_id=795960228]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+text = "texto"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+script = ExtResource("4_3a4th")
+
+[node name="Arrow" type="TextureRect" parent="TextBox" unique_id=1929647718]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 920.0
+offset_top = 220.0
+offset_right = 970.0
+offset_bottom = 270.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("5_2acvb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="TextBox" unique_id=647156014]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 300.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dqkrb")
+
+[connection signal="pressed" from="TextBox/Button" to="." method="_on_button_pressed"]

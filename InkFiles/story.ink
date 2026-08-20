@@ -1,9 +1,21 @@
 EXTERNAL background(key)
 EXTERNAL load_scene(scene)
+EXTERNAL speak(who, key)
+EXTERNAL move(who, where)
+EXTERNAL show_or_hide(who, show)
+
+VAR LEFTEST = 0
+VAR LEFT = 1
+VAR CENTER = 2
+VAR RIGHT = 3
+VAR RIGHTEST = 4
+
 
 -> start
 
 === start ===
+
+~ background("intro")
 
 Narrator: I was alone at home one day, watching my TV channel.
 
@@ -13,6 +25,8 @@ News Reporter: Emergency Broadcast!
 
 We have received numerous regarding a plague of talking sinks that knock on people's doors.
 
+~ show_or_hide("Ayumi", true)
+
 Sarah: What?
 
 News Reporter: Just like that!
@@ -21,6 +35,8 @@ They may appear friendly, but if you see a sink, DO NOT APPROACH THEM.
 There have been cases of sinks reproducing inside people's homes and taking them over, leaving our citizens without a home.
 If you encounter a sink, please do not interact.
 Wait until they leave your door, and do not answer.
+
+~ move("Ayumi", RIGHT)
 
 Sarah: That's so weird.
 Imagine that, talking sinks.

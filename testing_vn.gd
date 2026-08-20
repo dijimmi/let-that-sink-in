@@ -1,10 +1,19 @@
 class_name TestingVN
 extends Control
 
-@export var choices_buttons: HBoxContainer
+@export_group("Main Nodes")
 @export var background_img: TextureRect
 @export var textbox: VNTextBox
+@export var choices_buttons: HBoxContainer
 
+@export_category("Visual Assets")
+@export var characters: Dictionary[String, CharacterInfo]
+@export var backgrounds: Dictionary[String, Texture]
+var character_sprites: Dictionary[String, CharacterSprite]
+
+@export_category("Misc")
+@export_group("Misc")
+@export var character_sprite_scene: PackedScene
 @export var level1 : String
 
 var curr_player
@@ -13,15 +22,30 @@ var choices_added = false
 func _ready() -> void:
 	InkManager.bind_to_ink("background", EXT_background, self)
 	InkManager.bind_to_ink("load_scene", EXT_load_scene, self)
+	InkManager.bind_to_ink("speak", EXT_speak, self)
+	InkManager.bind_to_ink("move", EXT_move_character, self)
+	InkManager.bind_to_ink("show_or_hide", EXT_show_or_hide, self)
 	
 	InkManager.init_story(self)
 	
 	InkManager.next_line_reached.connect(_on_next_line_reached)
 	InkManager.choices_reached.connect(_on_choices_reached)
+	textbox.continued_story.connect(_on_button_pressed)
+	
+	_add_all_characters()
 
 
-func _on_next_line_reached(parsed_text : Dictionary):
-	textbox.setup(parsed_text["character"], parsed_text["message"])
+func _add_all_characters():
+	for char_info in characters.values():
+		var ch: CharacterSprite = character_sprite_scene.instantiate()
+		ch.setup(char_info)
+		ch.hide()
+		character_sprites[char_info.my_name] = ch
+		background_img.add_sibling(ch)
+
+
+func _on_next_line_reached(parsed_text : StoryMessage):
+	textbox.setup(parsed_text.character, parsed_text.message)
 
 
 func _on_choices_reached(choices):
@@ -43,18 +67,6 @@ func select_choice(button : Button):
 		child.queue_free()
 	
 	InkManager.select_choice(index)
-
-
-func EXT_load_scene(scene : String):
-	if "level" in scene:
-		get_tree().change_scene_to_file(level1)
-
-
-func EXT_background(key : String):
-	if _spell_check(key, "gun") == "gun":
-		background_img.texture = load("uid://cjryq86v83h24")
-	elif _spell_check(key, "black") == "black":
-		background_img.hide()
 
 
 func _spell_check(entered_text : String, target_text : String, acceptable_range : float = 0.7):
@@ -92,5 +104,37 @@ func _spell_check(entered_text : String, target_text : String, acceptable_range 
 		return entered_text
 
 
-func _on_button_pressed() -> void:
-	InkManager.continue_story()
+func _on_button_pressed() -> void: InkManager.continue_story()
+
+# ==============================================================
+# External INK Functions
+# ==============================================================
+
+
+func EXT_show_or_hide(who: String, appear: bool):
+	var character: CharacterSprite = character_sprites.get(who)
+	if appear:
+		character.show()
+	else:
+		character.hide()
+
+
+func EXT_move_character(who: String, where: int):
+	var character : CharacterSprite = character_sprites[who]
+	character.move_to(where)
+
+
+func EXT_load_scene(scene : String):
+	if "level" in scene:
+		get_tree().change_scene_to_file(level1)
+
+
+func EXT_background(key : String):
+	var bg = backgrounds.get(key)
+	background_img.texture = bg
+
+
+func EXT_speak(who : String, word : String):
+	var character = characters.get(who)
+	$Voice.stream = character.get_voiceline(word)
+	$Voice.play()

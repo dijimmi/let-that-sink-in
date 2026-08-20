@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bxxkmmucm8fvc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dtshl"]
+load_path = "res://.godot/imported/Portrait_Eyes_6_Worried.png-6fc29bd23621f4283248228b46c62dd3.ctex"
+
+[node name="Expression" type="TextureRect" unique_id=241444444]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_dtshl")
+expand_mode = 1
+stretch_mode = 4

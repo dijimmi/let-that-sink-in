@@ -60,10 +60,10 @@ func _bind_all() -> void:
 
 ## Returns a dictionary containing the elements of a line, such as character name
 ## and its message. [b]Change this to support expressions[/b]
-func _get_parsed_line() -> Dictionary:
+func _get_parsed_line() -> StoryMessage:
 	var text = _ink_player.continue_story()
 	var elements = []
-	var parsed_line : Dictionary
+	var parsed_line : StoryMessage = StoryMessage.new()
 	
 	# Parsing method
 	if text.contains(":"):
@@ -72,8 +72,8 @@ func _get_parsed_line() -> Dictionary:
 		elements.append("")
 		elements.append(text)
 		
-	parsed_line["character"] = elements[0]
-	parsed_line["message"] = elements[1]
+	parsed_line.character = elements[0]
+	parsed_line.message = elements[1]
 	
 	return parsed_line
 

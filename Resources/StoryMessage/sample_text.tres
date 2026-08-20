@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="StoryMessage" format=3 uid="uid://clq7ms5byv14d"]
+
+[ext_resource type="Script" uid="uid://rry7053tijpn" path="res://Resources/StoryMessage/story_message.gd" id="1_017k6"]
+
+[resource]
+script = ExtResource("1_017k6")

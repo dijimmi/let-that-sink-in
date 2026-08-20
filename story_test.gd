@@ -4,6 +4,9 @@ extends RichTextLabel
 var visible_char = 0
 var text_speed = 50
 var animation_enabled = true
+var full_text_shown = false
+
+signal text_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +25,8 @@ func toggle_text_animation():
 	visible_characters = -1
 
 func setup(story_text : String) -> void:
+	full_text_shown = false
+	
 	if animation_enabled:
 		visible_characters = 0
 		visible_char = 0
@@ -42,3 +47,8 @@ func _process(delta: float) -> void:
 	if (visible_char < text.length() or visible_char == -1) and animation_enabled:
 		visible_char += text_speed * delta
 		visible_characters = visible_char
+	
+	if visible_char >= text.length() and not full_text_shown:
+		full_text_shown = true
+		text_completed.emit()
+		
