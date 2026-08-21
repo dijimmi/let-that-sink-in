@@ -19,7 +19,7 @@ var enemy_spawn_range = Vector2(10, 0)
 var enemy_spawn_time = 5.0
 var enemy_count = 5
 var enemy_speed = 5
-@export var round_num = 6
+@export var round_num = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

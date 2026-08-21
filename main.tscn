@@ -44,7 +44,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/Control" unique_id=1678706226]
-visible = false
 layout_mode = 0
 offset_left = 1174.0
 offset_top = 145.0
