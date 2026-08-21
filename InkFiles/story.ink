@@ -48,6 +48,8 @@ Narrator: Sarah lets the sink in...
 
 GAME OVER
 
+~ load_scene("menu")
+
 -> END
 
 = dont_let_in

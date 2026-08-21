@@ -11,8 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://dqltxgsrhgw5x" path="res://assets/SoundEffects/zoom.wav" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://i20702apsejq" path="res://assets/SoundEffects/main_menu_loop.wav" id="6_272bh"]
 
-[node name="Node" type="Node" unique_id=272204553 node_paths=PackedStringArray("main_menu", "menu_music")]
+[node name="Node" type="Node" unique_id=272204553 node_paths=PackedStringArray("vn", "main_menu", "menu_music")]
 script = ExtResource("1_ig7tw")
+vn = NodePath("VisualNovel")
 main_menu = NodePath("MainMenu")
 menu_music = NodePath("MainMenu/MenuMusic")
 
@@ -148,5 +149,6 @@ stream = ExtResource("6_272bh")
 
 [node name="VisualNovel" parent="." unique_id=1899710736 node_paths=PackedStringArray("node") instance=ExtResource("2_0xm2m")]
 node = NodePath("..")
+main = null
 
 [connection signal="pressed" from="MainMenu/Control/Play" to="." method="_on_host_pressed"]

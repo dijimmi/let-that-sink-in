@@ -35,6 +35,7 @@ var is_playable = null
 
 @export var input_controller: InputController
 @export var ai_controller: Node3D
+@export var red_valve_cooldown: ProgressBar
 
 var controller : InputController
 
@@ -42,9 +43,12 @@ func _enter_tree() -> void:
 	pass
 	#set_multiplayer_authority(str(name).to_int())
 
+
 func _ready() -> void:
 	if not is_multiplayer_authority(): return
 	assert(is_playable != null, "Player property 'is playable' is null")
+	
+	red_valve_cooldown.max_value = valve_cooldown
 	
 	if is_playable:
 		controller = input_controller
@@ -68,7 +72,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("esc") and is_playable:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if Input.is_action_just_pressed("ui_right") and is_playable:
+	if Input.is_action_just_pressed("valve") and is_playable:
 		if t_valve <= valve_cooldown:
 			print('nuh uh')
 		else:
@@ -93,9 +97,10 @@ func _physics_process(delta: float) -> void:
 		t_bullet = weapon.bullet_reload_time
 	t_bullet += delta
 	
-	if t_valve >= valve_cooldown * 2:
+	if t_valve >= valve_cooldown:
 		t_valve = valve_cooldown
 	t_valve += delta
+	red_valve_cooldown.value = t_valve
 	
 	if controller.shooting_triggered() and t_bullet > weapon.bullet_reload_time:
 		t_bullet = 0.0

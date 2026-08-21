@@ -10,11 +10,19 @@ signal start_game
 func _ready() -> void:
 	print("OUI, we make games")
 	process_mode = Node.PROCESS_MODE_DISABLED
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	if StoryManager.current_scene != StoryManager.Scene.ONE:
 		_on_host_pressed()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+func reset():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	main_menu.show()
+	menu_music.play()
+	vn._ready()
 
 
 func _on_host_pressed() -> void:

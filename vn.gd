@@ -7,7 +7,9 @@ extends Control
 @export var choices_buttons: HBoxContainer
 @export var character_name: Label
 @export var background_img: TextureRect
-@export var node: Node
+@onready var node: Node = get_parent()
+
+@export var main : PackedScene
 
 @export var level1 : String
 
@@ -15,7 +17,7 @@ var curr_player
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
-	await node.start_game
+	#await node.start_game
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(_ink_player)
 	_init_story()
@@ -105,6 +107,8 @@ func select_choice(button : Button):
 func load_scene(scene : String):
 	if "level" in scene:
 		get_tree().change_scene_to_file(level1)
+	elif "menu" in scene:
+		get_parent().reset()
 
 
 func background(key : String):
@@ -112,6 +116,7 @@ func background(key : String):
 		background_img.texture = load("uid://cjryq86v83h24")
 	elif "black" in key:
 		background_img.hide()
+		$SFX.play(0.05)
 
 
 ## CURRENTLY NOT BEING USED
