@@ -117,6 +117,9 @@ func background(key : String):
 	elif "black" in key:
 		background_img.hide()
 		$SFX.play(0.05)
+	elif "tv" in key:
+		$TextBox.hide()
+		$NewsStuff.show_video()
 
 
 ## CURRENTLY NOT BEING USED

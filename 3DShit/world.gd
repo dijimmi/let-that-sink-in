@@ -12,6 +12,7 @@ extends Node3D
 @export var ui_scene: PackedScene
 @export var player_spawn: Marker3D
 @export var npc_spawn: Marker3D
+@export var ui_layer: CanvasLayer
 
 var door_HP = 100.0
 var update_timer = 0.0
@@ -25,6 +26,7 @@ var enemy_speed = 5
 func _ready() -> void:
 	if not multiplayer.is_server():
 		return
+	
 	var new_player : Player = player.instantiate()
 	new_player.is_playable = true
 	new_player.melee_weapon.hide()

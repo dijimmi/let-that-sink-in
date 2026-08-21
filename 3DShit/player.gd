@@ -36,6 +36,7 @@ var is_playable = null
 @export var input_controller: InputController
 @export var ai_controller: Node3D
 @export var red_valve_cooldown: ProgressBar
+@export var ui_layer: CanvasLayer
 
 var controller : InputController
 
@@ -55,6 +56,10 @@ func _ready() -> void:
 		head_camera.current = true
 		%Front.hide()
 		%Back.hide()
+		
+		if DisplayServer.is_touchscreen_available():
+			for child in ui_layer.get_children():
+				child.show()
 	else:
 		controller = ai_controller
 		#var new_material = StandardMaterial3D.new() 
@@ -72,7 +77,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("esc") and is_playable:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if Input.is_action_just_pressed("valve") and is_playable:
+	if (Input.is_action_just_pressed("valve") or pressed_valve) and is_playable:
+		pressed_valve = false
 		if t_valve <= valve_cooldown:
 			print('nuh uh')
 		else:
@@ -133,3 +139,7 @@ func _headbob(time) -> Vector3:
 @rpc("call_local", "any_peer", "reliable")
 func _shoot():
 	weapon.shoot(get_parent())
+
+var pressed_valve = false
+func _on_valve_pressed() -> void:
+	pressed_valve = true

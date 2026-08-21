@@ -53,6 +53,110 @@ texture = ExtResource("2_3thg1")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="NewsStuff" type="Control" parent="." unique_id=566427515 node_paths=PackedStringArray("video", "sink", "blush", "sink_timer", "news")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("4_gmpy6")
+video = NodePath("Video")
+sink = NodePath("Sink")
+blush = NodePath("Sink/Blush")
+sink_timer = NodePath("SinkTimer")
+news = NodePath("News")
+
+[node name="Video" type="VideoStreamPlayer" parent="NewsStuff" unique_id=747309559]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 411.0
+offset_top = -134.0
+offset_right = 411.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+mouse_filter = 1
+stream = SubResource("VideoStreamTheora_lag4i")
+
+[node name="Sink" type="TextureRect" parent="NewsStuff" unique_id=1371076309]
+visible = false
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = 118.0
+offset_top = 210.0
+offset_right = 818.0
+offset_bottom = 910.0
+texture = ExtResource("5_gmpy6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Blush" type="TextureRect" parent="NewsStuff/Sink" unique_id=803768859]
+visible = false
+layout_mode = 0
+offset_left = -44.0
+offset_top = 201.0
+offset_right = 611.0
+offset_bottom = 477.0
+rotation = -0.1480783
+texture = ExtResource("6_vh7ko")
+
+[node name="SinkBaby1" type="TextureRect" parent="NewsStuff" unique_id=362974199]
+visible = false
+layout_mode = 0
+offset_left = 464.99997
+offset_top = 508.99997
+offset_right = 1168.0
+offset_bottom = 1209.0
+rotation = 0.26623064
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_gmpy6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Blush" type="TextureRect" parent="NewsStuff/SinkBaby1" unique_id=923814693]
+layout_mode = 0
+offset_left = -44.0
+offset_top = 201.0
+offset_right = 611.0
+offset_bottom = 477.0
+rotation = -0.1480783
+texture = ExtResource("6_vh7ko")
+
+[node name="SinkBaby2" type="TextureRect" parent="NewsStuff" unique_id=553973418]
+visible = false
+layout_mode = 0
+offset_left = 86.999985
+offset_top = 651.0
+offset_right = 587.4907
+offset_bottom = 1174.7305
+rotation = -0.27876693
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_gmpy6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Blush" type="TextureRect" parent="NewsStuff/SinkBaby2" unique_id=50195932]
+layout_mode = 0
+offset_left = -144.01917
+offset_top = 139.76575
+offset_right = 510.98083
+offset_bottom = 415.76575
+rotation = -0.1480783
+texture = ExtResource("6_vh7ko")
+
+[node name="News" type="AudioStreamPlayer" parent="NewsStuff" unique_id=1061507564]
+stream = ExtResource("6_lag4i")
+parameters/looping = true
+
+[node name="SinkTimer" type="Timer" parent="NewsStuff" unique_id=1967559822]
+wait_time = 7.0
+
 [node name="TextBox" type="Control" parent="." unique_id=917721992]
 custom_minimum_size = Vector2(670, 300)
 layout_mode = 1
@@ -129,111 +233,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NewsStuff" type="Control" parent="." unique_id=566427515 node_paths=PackedStringArray("video", "sink", "blush", "sink_timer")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_gmpy6")
-video = NodePath("Video")
-sink = NodePath("Sink")
-blush = NodePath("Sink/Blush")
-sink_timer = NodePath("SinkTimer")
-
-[node name="Video" type="VideoStreamPlayer" parent="NewsStuff" unique_id=747309559]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 411.0
-offset_top = -134.0
-offset_right = 411.0
-offset_bottom = -134.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.35, 0.35)
-stream = SubResource("VideoStreamTheora_lag4i")
-
-[node name="Sink" type="TextureRect" parent="NewsStuff" unique_id=1371076309]
-visible = false
-custom_minimum_size = Vector2(700, 700)
-layout_mode = 0
-offset_left = 118.0
-offset_top = 210.0
-offset_right = 818.0
-offset_bottom = 910.0
-texture = ExtResource("5_gmpy6")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="Blush" type="TextureRect" parent="NewsStuff/Sink" unique_id=803768859]
-visible = false
-layout_mode = 0
-offset_left = -44.0
-offset_top = 201.0
-offset_right = 611.0
-offset_bottom = 477.0
-rotation = -0.1480783
-texture = ExtResource("6_vh7ko")
-
-[node name="SinkBaby1" type="TextureRect" parent="NewsStuff" unique_id=362974199]
-visible = false
-layout_mode = 0
-offset_left = 464.99997
-offset_top = 508.99997
-offset_right = 1168.0
-offset_bottom = 1209.0
-rotation = 0.26623064
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_gmpy6")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="Blush" type="TextureRect" parent="NewsStuff/SinkBaby1" unique_id=923814693]
-layout_mode = 0
-offset_left = -44.0
-offset_top = 201.0
-offset_right = 611.0
-offset_bottom = 477.0
-rotation = -0.1480783
-texture = ExtResource("6_vh7ko")
-
-[node name="SinkBaby2" type="TextureRect" parent="NewsStuff" unique_id=553973418]
-visible = false
-layout_mode = 0
-offset_left = 86.999985
-offset_top = 651.0
-offset_right = 587.4907
-offset_bottom = 1174.7305
-rotation = -0.27876693
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_gmpy6")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="Blush" type="TextureRect" parent="NewsStuff/SinkBaby2" unique_id=50195932]
-layout_mode = 0
-offset_left = -144.01917
-offset_top = 139.76575
-offset_right = 510.98083
-offset_bottom = 415.76575
-rotation = -0.1480783
-texture = ExtResource("6_vh7ko")
-
-[node name="News" type="AudioStreamPlayer" parent="NewsStuff" unique_id=1061507564]
-stream = ExtResource("6_lag4i")
-autoplay = true
-parameters/looping = true
-
-[node name="SinkTimer" type="Timer" parent="NewsStuff" unique_id=1967559822]
-wait_time = 7.0
-
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1270579693]
 stream = ExtResource("4_3thg1")
 pitch_scale = 0.71
 
-[connection signal="pressed" from="TextBox/Button" to="." method="_on_button_pressed"]
 [connection signal="finished" from="NewsStuff/Video" to="NewsStuff" method="_on_video_finished"]
 [connection signal="timeout" from="NewsStuff/SinkTimer" to="NewsStuff" method="_on_sink_timer_timeout"]
+[connection signal="pressed" from="TextBox/Button" to="." method="_on_button_pressed"]

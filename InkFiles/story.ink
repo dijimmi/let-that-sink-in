@@ -9,18 +9,7 @@ Narrator: I was alone at home one day, watching my TV channel.
 
 When suddenly, an emergency broadcast started playing.
 
-News Reporter: Emergency Broadcast!
-
-We have received numerous regarding a plague of talking sinks that knock on people's doors.
-
-Sarah: What?
-
-News Reporter: Just like that!
-Talking sinks are invading people's homes.
-They may appear friendly, but if you see a sink, DO NOT APPROACH THEM.
-There have been cases of sinks reproducing inside people's homes and taking them over, leaving our citizens without a home.
-If you encounter a sink, please do not interact.
-Wait until they leave your door, and do not answer.
+~ background("tv")
 
 Sarah: That's so weird.
 Imagine that, talking sinks.
