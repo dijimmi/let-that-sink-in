@@ -11,15 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://dqltxgsrhgw5x" path="res://assets/SoundEffects/zoom.wav" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://i20702apsejq" path="res://assets/SoundEffects/main_menu_loop.wav" id="6_272bh"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4c57u"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_efxa6"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dg77c"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
 [node name="Node" type="Node" unique_id=272204553 node_paths=PackedStringArray("main_menu", "menu_music")]
 script = ExtResource("1_ig7tw")
 main_menu = NodePath("MainMenu")
@@ -155,62 +146,6 @@ text = "Play"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="MainMenu" unique_id=776840424]
 stream = ExtResource("6_272bh")
-
-[node name="CharacterSelect" type="CanvasLayer" parent="." unique_id=1411187253]
-visible = false
-
-[node name="Control" type="Control" parent="CharacterSelect" unique_id=1595797448]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BG" type="ColorRect" parent="CharacterSelect/Control" unique_id=1801997658]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelect/Control" unique_id=750205915]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="TextureButton" type="TextureButton" parent="CharacterSelect/Control/HBoxContainer" unique_id=1534506843]
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource("CompressedTexture2D_4c57u")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton2" type="TextureButton" parent="CharacterSelect/Control/HBoxContainer" unique_id=1889746811]
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource("CompressedTexture2D_efxa6")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton3" type="TextureButton" parent="CharacterSelect/Control/HBoxContainer" unique_id=1029985948]
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource("CompressedTexture2D_dg77c")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="VisualNovel" parent="." unique_id=1899710736 node_paths=PackedStringArray("node") instance=ExtResource("2_0xm2m")]
 node = NodePath("..")

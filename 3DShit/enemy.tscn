@@ -67,3 +67,5 @@ font_size = 84
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=70594541]
 replication_config = SubResource("SceneReplicationConfig_8iu5m")
+
+[node name="Timer" type="Timer" parent="." unique_id=180192012]

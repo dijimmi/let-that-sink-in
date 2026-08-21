@@ -2,22 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dlcioo2vjkn5c" path="res://3DShit/player.gd" id="1_hycrr"]
 [ext_resource type="PackedScene" uid="uid://2m84c2qs8uca" path="res://3DShit/bullet.tscn" id="2_j3ay7"]
+[ext_resource type="Texture2D" uid="uid://cgjw3xpu65jlu" path="res://assets/Sprites/Sarah/sarah_front.png" id="3_du7l3"]
 [ext_resource type="Script" uid="uid://cxtn6f5oogevq" path="res://3DShit/input_controller.gd" id="3_j54lm"]
 [ext_resource type="PackedScene" uid="uid://buqdm78xrip8w" path="res://3DShit/weapon.tscn" id="3_niiih"]
-[ext_resource type="Texture2D" uid="uid://dqiab17iuew7v" path="res://assets/Honse_sprite.png" id="3_pv5kp"]
+[ext_resource type="Texture2D" uid="uid://rq8oaf8f2258" path="res://assets/Sprites/Sarah/sarah_up.png" id="4_cc702"]
 [ext_resource type="Script" uid="uid://4ybwsl4vwhkk" path="res://3DShit/ai_controller.gd" id="4_pv5kp"]
 [ext_resource type="PackedScene" uid="uid://c4wtyr88fnvx7" path="res://3DShit/melee_weapon.tscn" id="7_pv5kp"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5y7bv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_pv5kp")
-}],
-"loop": 1,
-"name": &"front",
-"speed": 10.0
-}]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21qiv"]
 
@@ -29,6 +19,134 @@ points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_niiih"]
 radius = 34.009
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwd8i"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7337"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1f3p"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jdfp"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx0xt"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r75or"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a1d4"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41jfv"]
+atlas = ExtResource("3_du7l3")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y7bv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwd8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7337")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1f3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jdfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx0xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r75or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a1d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41jfv")
+}],
+"loop": 1,
+"name": &"front",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7hh5"]
+atlas = ExtResource("4_cc702")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5r15"]
+atlas = ExtResource("4_cc702")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad0xw"]
+atlas = ExtResource("4_cc702")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnv37"]
+atlas = ExtResource("4_cc702")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ogmd"]
+atlas = ExtResource("4_cc702")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5mt8"]
+atlas = ExtResource("4_cc702")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxocq"]
+atlas = ExtResource("4_cc702")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3e04"]
+atlas = ExtResource("4_cc702")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uwow6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7hh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5r15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad0xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnv37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ogmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5mt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxocq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3e04")
+}],
+"loop": 1,
+"name": &"front",
+"speed": 10.0
+}]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hycrr"]
 properties/0/path = NodePath("Head/HeadCamera:rotation")
@@ -51,13 +169,6 @@ melee_weapon = NodePath("Head/HeadCamera/MeleeWeapon")
 mesh = NodePath("MeshInstance3D")
 input_controller = NodePath("InputController")
 ai_controller = NodePath("AIController")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=270345357]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-texture_filter = 2
-sprite_frames = SubResource("SpriteFrames_5y7bv")
-animation = &"front"
-frame_progress = 0.3829296
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1973946556]
 visible = false
@@ -89,11 +200,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69478416, 0)
 
 [node name="HeadCamera" type="Camera3D" parent="Head" unique_id=1200460906]
 
+[node name="Front" type="AnimatedSprite3D" parent="Head/HeadCamera" unique_id=270345357]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45827878, -0.69478416, -0.45646298)
+pixel_size = 0.05
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_5y7bv")
+animation = &"front"
+frame = 2
+frame_progress = 0.048201058
+
+[node name="Back" type="AnimatedSprite3D" parent="Head/HeadCamera" unique_id=1403608760]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45827878, -0.69478416, -0.45085287)
+pixel_size = 0.05
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_uwow6")
+animation = &"front"
+
 [node name="MeleeWeapon" parent="Head/HeadCamera" unique_id=1528444021 instance=ExtResource("7_pv5kp")]
 transform = Transform3D(-4.371139e-08, 0, 1, -0.66284513, 0.7487565, -2.8973881e-08, -0.7487565, -0.66284513, -3.2729186e-08, -0.093453765, -0.6145433, -0.98868716)
 
 [node name="Weapon" parent="Head/HeadCamera" unique_id=1681454042 instance=ExtResource("3_niiih")]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0.7989626, 0, 0.33465934)
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0.7989626, -1.254403, -0.77021337)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=357952220]
 replication_config = SubResource("SceneReplicationConfig_hycrr")

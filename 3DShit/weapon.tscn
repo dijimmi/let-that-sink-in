@@ -1,20 +1,23 @@
 [gd_scene format=3 uid="uid://buqdm78xrip8w"]
 
 [ext_resource type="Script" uid="uid://bqwueeuuclleb" path="res://3DShit/weapon.gd" id="1_7wede"]
+[ext_resource type="PackedScene" uid="uid://2m84c2qs8uca" path="res://3DShit/bullet.tscn" id="2_phv0b"]
+[ext_resource type="PackedScene" uid="uid://qo6nath0ent8" path="res://3DShit/valve/gun.tscn" id="2_qpgb7"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_5y7bv"]
-
-[node name="Weapon" type="Node3D" unique_id=1681454042 node_paths=PackedStringArray("muzzle")]
+[node name="Weapon" type="Node3D" unique_id=1681454042 node_paths=PackedStringArray("muzzle", "valve_timer")]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_7wede")
 muzzle = NodePath("Muzzle")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2070252467]
-mesh = SubResource("CylinderMesh_5y7bv")
-
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=480334050]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2790024e-08, -0.97892165, 0)
-target_position = Vector3(0, -1, -1)
+bullet = ExtResource("2_phv0b")
+valve_timer = NodePath("ValveTimer")
 
 [node name="Muzzle" type="Marker3D" parent="." unique_id=629423013]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2938286e-08, -0.9823135, -0.41591954)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66936755, -0.50527304, 0)
+
+[node name="Gun" parent="." unique_id=944027238 instance=ExtResource("2_qpgb7")]
+transform = Transform3D(2.1855695e-09, 0.05, 7.54979e-09, 0.05, -2.1855695e-09, 0, 3.3001182e-16, 7.54979e-09, -0.05, 0, 0, 0)
+
+[node name="ValveTimer" type="Timer" parent="." unique_id=773816003]
+wait_time = 3.0
+
+[connection signal="timeout" from="ValveTimer" to="." method="_on_valve_timer_timeout"]

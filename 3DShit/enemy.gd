@@ -9,7 +9,7 @@ static var count = 0
 signal enemy_died
 var hit_counter = 0
 var health = 2
-var unique_bullet : Bullet = Bullet.new()
+var unique_bullet : Bullet = null
 
 func _ready():
 	count += 1
@@ -46,6 +46,17 @@ func _physics_process(delta: float) -> void:
 	
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
+	
+	#var my_pos = global_position
+	#if is_instance_valid(unique_bullet):
+		#var last_bullet_loc = unique_bullet.global_position
+		#last_bullet_loc.y = 0.0
+		#my_pos.y = 0.0
+		#var distance = my_pos.distance_to(last_bullet_loc)
+		#print("OOOH THTE DISTANCE: ", distance)
+		#if distance > 1.5:
+			#unique_bullet.collision_shape.set_deferred("disabed", false)
+			#unique_bullet = null
 	
 	var direction = (next_location - current_location)
 	direction.y = 0.0

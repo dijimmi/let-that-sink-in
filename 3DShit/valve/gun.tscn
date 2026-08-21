@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://qo6nath0ent8"]
+
+[ext_resource type="PackedScene" uid="uid://bga18scxruavl" path="res://3DShit/valve/walther-p88-gun/source/Gun/Gun.obj" id="1_naflr"]
+[ext_resource type="Texture2D" uid="uid://c3hxt111oxxai" path="res://3DShit/valve/walther-p88-gun/source/Gun/P88_albedo.tga" id="2_1xyxr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luw0f"]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_1xyxr")
+
+[node name="Gun" unique_id=944027238 instance=ExtResource("1_naflr")]
+transform = Transform3D(4.371139e-08, 1, 8.742278e-08, 1, -4.371139e-08, 0, 3.821371e-15, 8.742278e-08, -1, 0, 0, 0)
+
+[node name="Mesh" parent="." index="0" unique_id=916434462]
+surface_material_override/0 = SubResource("StandardMaterial3D_luw0f")

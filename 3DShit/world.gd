@@ -34,9 +34,19 @@ func _ready() -> void:
 	if StoryManager.current_scene == StoryManager.Scene.TWO:
 		var npc : Player = player.instantiate()
 		npc.is_playable = false
-		npc.weapon.hide()
 		add_child(npc)
 		npc.global_position = npc_spawn.position
+		
+	elif StoryManager.current_scene == StoryManager.Scene.THREE:
+		var npc : Player = player.instantiate()
+		npc.is_playable = false
+		add_child(npc)
+		npc.global_position = npc_spawn.position
+		
+		var npc2 : Player = player.instantiate()
+		npc2.is_playable = false
+		add_child(npc2)
+		npc2.global_position = npc_spawn.position + Vector3(5, 0, 5)
 	
 	if not new_player.is_playable:
 		$Camera3D.make_current()
@@ -62,7 +72,7 @@ func _get_spawn_position():
 	var pos = enemy_spawn.global_position
 	var srange = enemy_spawn_range
 	var rand_x = randi_range(pos.x - srange.x, pos.x + srange.x)
-	var rand_z = randf_range(pos.z, pos.z + srange.y)
+	var rand_z = randi_range(pos.z, pos.z + srange.y)
 	
 	pos.x = rand_x
 	pos.z = rand_z
@@ -71,6 +81,8 @@ func _get_spawn_position():
 var enemies_close = 0
 var enemy_damage = 2
 
+var last_round_timer = 0.0
+var win = 3.0
 func _physics_process(delta: float) -> void:
 	update_timer += delta
 	if update_timer >= 0.3:  # update 5x/sec instead of 60x/sec
@@ -86,9 +98,20 @@ func _physics_process(delta: float) -> void:
 			if body is Enemy:
 				enemies_close += 1
 	
-	if door_HP < 0:
-		StoryManager.update_scene(StoryManager.Scene.TWO)
+	
+	if StoryManager.current_scene == StoryManager.Scene.THREE and round_num > 6:
+		last_round_timer += delta
+	if last_round_timer >= win:
+		StoryManager.update_scene(StoryManager.Scene.FOUR)
 		get_tree().change_scene_to_packed(ui_scene)
+	
+	if door_HP <= 0:
+		if StoryManager.current_scene == StoryManager.Scene.ONE:
+			StoryManager.update_scene(StoryManager.Scene.FOUR)
+			get_tree().change_scene_to_packed(ui_scene)
+		else:
+			StoryManager.update_scene(StoryManager.Scene.THREE)
+			get_tree().change_scene_to_packed(ui_scene)
 
 
 func _on_enemy_spawn_timer_timeout() -> void:
@@ -133,8 +156,8 @@ func update_round():
 	if round_num == 1:
 		enemy_spawn_range = Vector2(20, 0)
 		enemy_count = 5
-		enemy_spawn_time = 10000000
-		enemy_speed = 0
+		enemy_spawn_time = 5
+		enemy_speed = 1
 		
 	elif round_num == 2:
 		enemy_spawn_range = Vector2(12, 3)

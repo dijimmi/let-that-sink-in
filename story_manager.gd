@@ -1,12 +1,14 @@
 extends Node
 
-enum Scene { ONE, TWO }
+enum Scene { ONE, TWO, THREE, FOUR }
 
 var current_scene = Scene.ONE
 
 var paths : Dictionary[Scene, String] = {
 	Scene.ONE : "start",
-	Scene.TWO : "homeless_scene"
+	Scene.TWO : "homeless_scene",
+	Scene.THREE : "retry",
+	Scene.FOUR : "finale",
 }
 
 func update_scene(new_scene : Scene):

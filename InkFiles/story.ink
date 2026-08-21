@@ -160,3 +160,17 @@ THANKS FOR PLAYTESTING!! <3333
 ~ load_scene("level2")
 
 -> END
+
+=== retry ===
+
+Sarah: I must keep trying!
+
+~ load_scene("level3")
+
+-> END
+
+=== finale ===
+
+Sarah: Yay, I won!
+
+-> END
