@@ -2,7 +2,7 @@ extends Node
 
 enum Scene { ONE, TWO, THREE, FOUR }
 
-var current_scene = Scene.ONE
+var current_scene = Scene.THREE
 
 var paths : Dictionary[Scene, String] = {
 	Scene.ONE : "start",

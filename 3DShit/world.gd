@@ -19,7 +19,7 @@ var enemy_spawn_range = Vector2(10, 0)
 var enemy_spawn_time = 5.0
 var enemy_count = 5
 var enemy_speed = 5
-@export var round_num = 1
+@export var round_num = 6
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,7 +82,7 @@ var enemies_close = 0
 var enemy_damage = 2
 
 var last_round_timer = 0.0
-var win = 3.0
+var win = 8.0
 func _physics_process(delta: float) -> void:
 	update_timer += delta
 	if update_timer >= 0.3:  # update 5x/sec instead of 60x/sec
@@ -107,7 +107,7 @@ func _physics_process(delta: float) -> void:
 	
 	if door_HP <= 0:
 		if StoryManager.current_scene == StoryManager.Scene.ONE:
-			StoryManager.update_scene(StoryManager.Scene.FOUR)
+			StoryManager.update_scene(StoryManager.Scene.TWO)
 			get_tree().change_scene_to_packed(ui_scene)
 		else:
 			StoryManager.update_scene(StoryManager.Scene.THREE)
